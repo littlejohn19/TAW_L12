@@ -2,15 +2,32 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {BlogItemDetailsComponent} from "./components/blog-item-details/blog-item-details.component";
 import {BlogHomeComponent} from "./components/blog-home/blog-home.component";
+import {HomeComponent} from "./components/home/home.component";
+import {AuthGuard} from "./services/auth.guard";
+import {LoginComponent} from "./components/login/login.component";
+import {SignupComponent} from "./components/signup/signup.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: BlogHomeComponent
+    component: HomeComponent
+  },
+  {
+    path: 'blog',
+    component: BlogHomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'blog/detail/:id',
     component: BlogItemDetailsComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'signup',
+    component: SignupComponent
   }
 ];
 
